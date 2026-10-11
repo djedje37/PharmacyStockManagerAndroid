@@ -1,4 +1,4 @@
-package com.djedje37.pharmacystockmanager.ui.theme
+package com.djedje37.pharmacystockmanager.presentation.theme
 
 import android.app.Activity
 import android.os.Build

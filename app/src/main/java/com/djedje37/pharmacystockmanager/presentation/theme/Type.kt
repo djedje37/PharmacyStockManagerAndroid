@@ -1,4 +1,4 @@
-package com.djedje37.pharmacystockmanager.ui.theme
+package com.djedje37.pharmacystockmanager.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
