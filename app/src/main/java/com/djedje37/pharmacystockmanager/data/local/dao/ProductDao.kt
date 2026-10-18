@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.Flow
 interface ProductDao {
 
 
+    @Query("SELECT * FROM products WHERE cip = :cip")
+    fun countByCip(cip : String) : Int
+
 
     @Query("SELECT * FROM products")
     fun observeAll(): Flow<List<ProductEntity>>
@@ -17,6 +20,8 @@ interface ProductDao {
     @Query("SELECT COUNT(*) FROM products")
     suspend fun count() : Int
 
+    @Insert
+    suspend fun insert(product: ProductEntity)
     @Insert
     suspend fun insertAll(products: List<ProductEntity>)
 

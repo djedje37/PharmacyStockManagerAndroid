@@ -8,5 +8,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun ProductRoute(viewModel: ProductViewModel = viewModel(factory = ProductViewModel.factory )) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    ProductScreen(uiState = state)
+
+    ProductScreen(
+        uiState = state,
+        onAddClick = viewModel::onAddClick,
+        onAddDismiss = viewModel::onAddDismiss,
+        onAddConfirm = viewModel::onAddConfirm,
+    )
 }

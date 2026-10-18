@@ -1,5 +1,6 @@
 package com.djedje37.pharmacystockmanager.presentation.ui.product
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -10,30 +11,46 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.lazy.items
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.ui.unit.dp
-import com.djedje37.pharmacystockmanager.Greeting
-import com.djedje37.pharmacystockmanager.presentation.theme.PharmacyStockManagerTheme
+import com.djedje37.pharmacystockmanager.presentation.ui.addproduct.AddProductDialog
+import com.djedje37.pharmacystockmanager.presentation.ui.addproduct.NewProductInput
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProductScreen(uiState: ProductUiState, modifier: Modifier = Modifier) {
+fun ProductScreen(uiState: ProductUiState,
+                  onAddClick: () -> Unit,
+                  onAddDismiss: () -> Unit,
+                  onAddConfirm: (NewProductInput) -> Unit,
+                  modifier: Modifier = Modifier) {
 
-    when {
-        uiState.isLoading -> Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            CircularProgressIndicator()
-        }
-        uiState.products.isEmpty() -> Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text("Aucun Produt")
-        }
-        else -> LazyColumn(modifier.fillMaxSize()) {
-            items(
-                items = uiState.products,
-                key = {it.id}
-            ) { product ->
-                Text(product.name, modifier = Modifier.padding(16.dp))
+    Scaffold(
+        modifier = modifier,
+        floatingActionButton = { FloatingActionButton(onClick = onAddClick) { Text("+") } },
+    ) {
+        when {
+            uiState.isLoading -> Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
             }
+            uiState.products.isEmpty() -> Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text("Aucun Produt")
+            }
+            else -> LazyColumn(modifier.fillMaxSize()) {
+                items(
+                    items = uiState.products,
+                    key = {it.id}
+                ) { product ->
+                    Text(product.name, modifier = Modifier.padding(16.dp))
+                }
 
+            }
         }
+   }
+    if (uiState.addDialog.isVisible) {
+        AddProductDialog(uiState.addDialog, onAddDismiss, onAddConfirm)
     }
+
+
 }
 
