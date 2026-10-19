@@ -6,10 +6,14 @@ import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
-fun ProductRoute(viewModel: ProductViewModel = viewModel(factory = ProductViewModel.factory )) {
+fun ProductRoute(
+    onProductClick: (Long) -> Unit,
+    viewModel: ProductViewModel = viewModel(factory = ProductViewModel.factory )
+) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
     ProductScreen(
+        onProductClick = { id -> onProductClick(id) },
         uiState = state,
         onAddClick = viewModel::onAddClick,
         onAddDismiss = viewModel::onAddDismiss,

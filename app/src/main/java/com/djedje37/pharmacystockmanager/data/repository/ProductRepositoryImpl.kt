@@ -17,6 +17,12 @@ class ProductRepositoryImpl(private val dao: ProductDao) : ProductRepository {
         }
     }
 
+    override fun observeProduct(id: Long): Flow<Product?> {
+        return (dao.observeById(id).map {
+            it.toDomain()
+        })
+    }
+
     override suspend fun existsByCip(cip: String): Boolean {
         return (dao.countByCip(cip) > 0)
     }

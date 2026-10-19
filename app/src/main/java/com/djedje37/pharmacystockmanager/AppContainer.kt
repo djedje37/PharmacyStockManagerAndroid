@@ -7,6 +7,7 @@ import com.djedje37.pharmacystockmanager.data.local.seed.DatabaseSeeder
 import com.djedje37.pharmacystockmanager.data.repository.ProductRepositoryImpl
 import com.djedje37.pharmacystockmanager.domain.repository.ProductRepository
 import com.djedje37.pharmacystockmanager.domain.usecase.AddProductUseCase
+import com.djedje37.pharmacystockmanager.domain.usecase.ObserveProductUseCase
 import com.djedje37.pharmacystockmanager.domain.usecase.ObserveProductsUseCase
 
 class AppContainer(context: Context) {
@@ -15,6 +16,7 @@ class AppContainer(context: Context) {
     private val dao = db.productDao()
     private val productRepository : ProductRepository = ProductRepositoryImpl(dao)
     val observeProductsUseCase = ObserveProductsUseCase(productRepository)
+    val observeProductUseCase = ObserveProductUseCase(productRepository)
     val databaseSeeder = DatabaseSeeder(context, dao)
     val addProductUseCase = AddProductUseCase(productRepository)
 }

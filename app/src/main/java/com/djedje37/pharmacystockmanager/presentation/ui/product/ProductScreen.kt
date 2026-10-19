@@ -1,6 +1,7 @@
 package com.djedje37.pharmacystockmanager.presentation.ui.product
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -19,11 +20,14 @@ import com.djedje37.pharmacystockmanager.presentation.ui.addproduct.NewProductIn
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProductScreen(uiState: ProductUiState,
-                  onAddClick: () -> Unit,
-                  onAddDismiss: () -> Unit,
-                  onAddConfirm: (NewProductInput) -> Unit,
-                  modifier: Modifier = Modifier) {
+fun ProductScreen(
+    uiState: ProductUiState,
+    onProductClick: (Long) -> Unit,
+    onAddClick: () -> Unit,
+    onAddDismiss: () -> Unit,
+    onAddConfirm: (NewProductInput) -> Unit,
+    modifier: Modifier = Modifier
+) {
 
     Scaffold(
         modifier = modifier,
@@ -41,7 +45,11 @@ fun ProductScreen(uiState: ProductUiState,
                     items = uiState.products,
                     key = {it.id}
                 ) { product ->
-                    Text(product.name, modifier = Modifier.padding(16.dp))
+                    Text(
+                        product.name,
+                        modifier = Modifier
+                            .clickable { onProductClick(product.id) }
+                            .padding(16.dp))
                 }
 
             }

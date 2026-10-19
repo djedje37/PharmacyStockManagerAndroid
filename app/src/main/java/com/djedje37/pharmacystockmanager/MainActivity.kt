@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.djedje37.pharmacystockmanager.presentation.theme.PharmacyStockManagerTheme
+import com.djedje37.pharmacystockmanager.presentation.ui.navigation.AppNavHost
 import com.djedje37.pharmacystockmanager.presentation.ui.product.ProductRoute
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PharmacyStockManagerTheme {
-                Surface { ProductRoute() }
+                Surface { AppNavHost() }
             }
         }
     }

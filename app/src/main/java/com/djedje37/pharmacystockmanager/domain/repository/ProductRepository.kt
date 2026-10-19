@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow;
 
 interface ProductRepository {
     fun observeProducts(): Flow<List<Product>>
+    fun observeProduct(id: Long): Flow<Product?>
 
     // Add
     suspend fun existsByCip(cip: String): Boolean

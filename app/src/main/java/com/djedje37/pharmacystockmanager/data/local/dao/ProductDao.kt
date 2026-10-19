@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.Flow
 interface ProductDao {
 
 
+    @Query("SELECT * FROM products WHERE id = :id")
+    fun observeById(id: Long): Flow<ProductEntity>
+
     @Query("SELECT * FROM products WHERE cip = :cip")
     fun countByCip(cip : String) : Int
 
