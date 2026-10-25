@@ -8,14 +8,12 @@ data class Product(
     val name: String,
     val category: String,
     val publicPrice: Double,
-    val purchasePrice: Double,
     val reimbursementBase: Double,
     val vatRate: Int,
-    val currentStock: Int,
     val alertThreshold: Int,
-    val lastSaleDate: LocalDate?,
-    val knownExpirationDate: LocalDate?,
     val geoCode: String,
+    val batches: List<Batch> = emptyList(),
 ) {
+    val currentStock: Int get() = batches.sumOf { it.quantity }
     val isLowStock: Boolean get() = currentStock <= alertThreshold
 }

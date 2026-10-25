@@ -10,7 +10,7 @@ class AddProductUseCase(private val repository: ProductRepository) {
         if (product.cip.isBlank()) return AddProductResult.Failure(AddProductError.BlankCip)
         if (product.name.isBlank()) return AddProductResult.Failure(AddProductError.BlankName)
 
-        if (product.currentStock < 0 || product.alertThreshold < 0 || product.publicPrice < 0 || product.purchasePrice < 0)
+        if (/*product.currentStock < 0 || */ product.alertThreshold < 0 || product.publicPrice < 0 /*|| product.purchasePrice < 0*/)
             return AddProductResult.Failure(AddProductError.NegativeValue)
 
         if(repository.existsByCip(product.cip)) {

@@ -17,6 +17,6 @@ class AppContainer(context: Context) {
     private val productRepository : ProductRepository = ProductRepositoryImpl(dao)
     val observeProductsUseCase = ObserveProductsUseCase(productRepository)
     val observeProductUseCase = ObserveProductUseCase(productRepository)
-    val databaseSeeder = DatabaseSeeder(context, dao)
+    val databaseSeeder = DatabaseSeeder(context, dao, db.batchDao(), db.stockMovementDao())
     val addProductUseCase = AddProductUseCase(productRepository)
 }

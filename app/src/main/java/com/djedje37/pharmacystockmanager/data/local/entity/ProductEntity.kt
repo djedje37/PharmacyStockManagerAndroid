@@ -15,12 +15,8 @@ data class ProductEntity (
     val name: String,
     val category: String,
     val publicPrice: Double,
-    val purchasePrice: Double,
     val reimbursementBase: Double,
     val vatRate: Int,
-    val currentStock: Int,
     val alertThreshold: Int,
-    val lastSaleDate: String?,          // "2026-05-22", format ISO
-    val knownExpirationDate: String?,
     val geoCode: String,
 )

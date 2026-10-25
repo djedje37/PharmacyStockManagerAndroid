@@ -27,11 +27,11 @@ fun ProductDetailScreen(state: ProductDetailUiState, onBack: () -> Unit) {
                 DetailRow("CIP", product.cip)
                 DetailRow("Catégorie", product.category)
                 DetailRow("Prix public", product.publicPrice.toString())
-                DetailRow("Prix d'achat", product.purchasePrice.toString())
-                DetailRow("Stock", "${product.currentStock} (seuil ${product.alertThreshold})")
-                if (product.isLowStock) Text("Stock bas", color = MaterialTheme.colorScheme.error)
-                DetailRow("Dernière vente", product.lastSaleDate?.toString() ?: "—")
-                DetailRow("Péremption connue", product.knownExpirationDate?.toString() ?: "—")
+              //  DetailRow("Prix d'achat", product.purchasePrice.toString())
+               // DetailRow("Stock", "${product.currentStock} (seuil ${product.alertThreshold})")
+               // if (product.isLowStock) Text("Stock bas", color = MaterialTheme.colorScheme.error)
+               // DetailRow("Dernière vente", product.lastSaleDate?.toString() ?: "—")
+               // DetailRow("Péremption connue", product.knownExpirationDate?.toString() ?: "—")
                 DetailRow("Emplacement", product.geoCode)
             }
         }

@@ -13,9 +13,9 @@ data class NewProductInput(val cip: String, val name: String, val category: Stri
         val threshold = alertThreshold.trim().toIntOrNull() ?: 0
 
         return Product( id = 0, cip = cip, name = name, category = category,
-            publicPrice = pub, purchasePrice = buy, reimbursementBase = 0.0, vatRate = 0,
-            currentStock = stock, alertThreshold = threshold,
-            lastSaleDate = null, knownExpirationDate = null, geoCode = "",)
+            publicPrice = pub, /*purchasePrice = buy ,*/ reimbursementBase = 0.0, vatRate = 0,
+            /*currentStock = stock,*/ alertThreshold = threshold,
+            /*lastSaleDate = null, knownExpirationDate = null, */geoCode = "",)
 
 
 
