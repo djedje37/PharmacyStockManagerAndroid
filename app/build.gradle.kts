@@ -59,6 +59,8 @@ dependencies {
     implementation(libs.androidx.room3.common.jvm)
     implementation(libs.androidx.room3.runtime.android)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

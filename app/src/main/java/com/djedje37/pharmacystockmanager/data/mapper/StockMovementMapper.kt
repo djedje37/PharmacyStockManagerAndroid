@@ -8,7 +8,7 @@ import java.time.LocalDate
 fun StockMovementEntity.toDomain() = StockMovement(
     id = id,
     productId = productId,
-    type = MovementType.valueOf(type),
+    type = type,
     quantity = quantity,
     date = LocalDate.parse(date)
 )
@@ -17,7 +17,7 @@ fun StockMovementEntity.toDomain() = StockMovement(
 fun StockMovement.toEntity() = StockMovementEntity(
     id = id,
     productId = productId,
-    type = type.name,
+    type = type,
     quantity = quantity,
     date = date.toString()
 )
